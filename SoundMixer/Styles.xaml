@@ -11,10 +11,10 @@
 				<ControlTemplate TargetType="Thumb">
 					<Ellipse Name="Ellipse">
 						<Ellipse.Fill>
-							<RadialGradientBrush>
+							<RadialGradientBrush >
 								<RadialGradientBrush.GradientStops>
-									<GradientStop Color="Gray" Offset=".01" />
-									<GradientStop Color="#252526" Offset="1" />
+									<GradientStop Color="LightGray" Offset="0" />
+									<GradientStop Color="DarkBlue" Offset="10" />
 								</RadialGradientBrush.GradientStops>
 							</RadialGradientBrush>
 						</Ellipse.Fill>
@@ -25,14 +25,13 @@
 								<Setter.Value>
 									<RadialGradientBrush>
 										<RadialGradientBrush.GradientStops>
-											<GradientStop Color="LightGray" Offset=".01" />
-											<GradientStop Color="#252526" Offset="1" />
+											<GradientStop Color="LightBlue" Offset="0" />
+											<GradientStop Color="Silver" Offset="10" />
 										</RadialGradientBrush.GradientStops>
 									</RadialGradientBrush>
 								</Setter.Value>
 							</Setter>
 						</Trigger>
-						
 					</ControlTemplate.Triggers>
 				</ControlTemplate>
 			</Setter.Value>

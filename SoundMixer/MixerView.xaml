@@ -39,63 +39,81 @@
 				<Button Grid.Column="3" Height="15" Width="15" Margin="0,0,5,0" Name="CloseButton" Click="CloseButton_Click">
 					<Button.Template>
 						<ControlTemplate>
-							<Border CornerRadius="10">
-								<Border.Style>
-									<Style TargetType="{x:Type Border}">
-										<Setter Property="Background" Value="#FF7866"/>
-										<Setter Property="BorderBrush" Value="#F0614F"/>
-										<Setter Property="BorderThickness" Value="1"/>
+							<Ellipse Name="Ellipse">
+								<Ellipse.Style>
+									<Style TargetType="{x:Type Ellipse}">
+										<Setter  Property="Ellipse.Fill">
+											<Setter.Value>
+												<RadialGradientBrush >
+													<RadialGradientBrush.GradientStops>
+														<GradientStop Color="#FF7866" Offset="0" />
+														<GradientStop Color="#F0614F" Offset="10" />
+													</RadialGradientBrush.GradientStops>
+												</RadialGradientBrush>
+											</Setter.Value>
+										</Setter>
 										<Style.Triggers>
 											<DataTrigger Binding="{Binding IsMouseOver, ElementName=CloseButton}" Value="True">
-												<Setter  Property="Border.Background" Value="#F0614F"/>
+												<Setter  Property="Ellipse.Fill" Value="#F0614F"/>
 											</DataTrigger>
 										</Style.Triggers>
 									</Style>
-								</Border.Style>
-								<TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-1,0,0"></TextBlock>
-							</Border>
+								</Ellipse.Style>
+							</Ellipse>
 						</ControlTemplate>
 					</Button.Template>
 				</Button>
 				<Button Grid.Column="2" Height="15" Width="15" Margin="0,0,5,0" Name="MaximizeButton" Click="MaximizeButton_Click">
 					<Button.Template>
 						<ControlTemplate>
-							<Border CornerRadius="10">
-								<Border.Style>
-									<Style TargetType="{x:Type Border}">
-										<Setter Property="Background" Value="#FFCA27"/>
-										<Setter Property="BorderBrush" Value="#EAB225"/>
-										<Setter Property="BorderThickness" Value="1"/>
+							<Ellipse Name="Ellipse">
+								<Ellipse.Style>
+									<Style TargetType="{x:Type Ellipse}">
+										<Setter  Property="Ellipse.Fill">
+											<Setter.Value>
+												<RadialGradientBrush >
+													<RadialGradientBrush.GradientStops>
+														<GradientStop Color="#FFCA27" Offset="0" />
+														<GradientStop Color="#EAB225" Offset="10" />
+													</RadialGradientBrush.GradientStops>
+												</RadialGradientBrush>
+											</Setter.Value>
+										</Setter>
 										<Style.Triggers>
 											<DataTrigger Binding="{Binding IsMouseOver, ElementName=MaximizeButton}" Value="True">
-												<Setter  Property="Border.Background" Value="#EAB225"/>
+												<Setter  Property="Ellipse.Fill" Value="#EAB225"/>
 											</DataTrigger>
 										</Style.Triggers>
 									</Style>
-								</Border.Style>
-								<TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-1,0,0"></TextBlock>
-							</Border>
+								</Ellipse.Style>
+							</Ellipse>
 						</ControlTemplate>
 					</Button.Template>
 				</Button>
 				<Button Grid.Column="1" Height="15" Width="15" Margin="0,0,5,0" Name="MinimizeButtom" Click="MinimizeButtom_Click">
 					<Button.Template>
 						<ControlTemplate>
-							<Border CornerRadius="10">
-								<Border.Style>
-									<Style TargetType="{x:Type Border}">
-										<Setter Property="Background" Value="#00D24F"/>
-										<Setter Property="BorderBrush" Value="#00BB44"/>
-										<Setter Property="BorderThickness" Value="1"/>
+							<Ellipse Name="Ellipse">
+								<Ellipse.Style>
+									<Style TargetType="{x:Type Ellipse}">
+										<Setter  Property="Ellipse.Fill">
+											<Setter.Value>
+												<RadialGradientBrush >
+													<RadialGradientBrush.GradientStops>
+														<GradientStop Color="#00D24F" Offset="0" />
+														<GradientStop Color="#00BB44" Offset="10" />
+													</RadialGradientBrush.GradientStops>
+												</RadialGradientBrush>
+											</Setter.Value>
+										</Setter>
 										<Style.Triggers>
 											<DataTrigger Binding="{Binding IsMouseOver, ElementName=MinimizeButtom}" Value="True">
-												<Setter  Property="Border.Background" Value="#00BB44"/>
+												<Setter  Property="Ellipse.Fill" Value="#00BB44"/>
 											</DataTrigger>
 										</Style.Triggers>
 									</Style>
-								</Border.Style>
-								<TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-1,0,0"></TextBlock>
-							</Border>
+								</Ellipse.Style>
+							</Ellipse>
 						</ControlTemplate>
 					</Button.Template>
 				</Button>
@@ -179,7 +197,7 @@
 				</ToggleButton.Style>
 			</ToggleButton>
 			<StackPanel Grid.Row="1"  Grid.Column="1" Name="SliderParent" Orientation="Horizontal">
-				<Slider VerticalAlignment="Center" Width="{Binding Path=ActualWidth, ElementName=SliderParent}"
+				<Slider VerticalAlignment="Center" Width="{Binding Path=ActualWidth, ElementName=SliderParent}" Thumb.DragStarted="Slider_DragStarted" Thumb.DragCompleted="Slider_DragCompleted"
 						Style="{StaticResource AppSliderStyle}" Minimum="0" Maximum="100" Value="{Binding MasterVolume}"></Slider>
 			</StackPanel>
 			<Border Grid.Row="1" Grid.Column="2" Name="CircleBorder" CornerRadius="30" Height="20" Width="20" Background="#01A2DD">
