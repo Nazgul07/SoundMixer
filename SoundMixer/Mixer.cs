@@ -15,7 +15,9 @@ namespace SoundMixer
 				ObservableCollection<AudioApp> list = new ObservableCollection<AudioApp>();
 				for (int i = 0; i < _outputDevice.AudioSessionManager.Sessions.Count; i++)
 				{
-					list.Add(new AudioApp(_outputDevice.AudioSessionManager.Sessions[i]));
+					var session = _outputDevice.AudioSessionManager.Sessions[i];
+					if(session.State == AudioSessionState.AudioSessionStateActive || session.IsSystemIsSystemSoundsSession)
+						list.Add(new AudioApp(session));
 				}
 				return list;
 			}

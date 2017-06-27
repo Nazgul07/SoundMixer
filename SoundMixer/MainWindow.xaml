@@ -43,53 +43,65 @@
 					</StackPanel.Style>
 				</StackPanel>
 			</Border>
-			<Button Name="CloseButton" Panel.ZIndex="5" Height="20" Width="20" Margin="-10,-30,0,0" Click="CloseButton_Click" >
+			<Button Name="CloseButton" Panel.ZIndex="5" Height="15" Width="15" Margin="-10,-30,0,0" Click="CloseButton_Click" >
 				<Button.Template>
 					<ControlTemplate>
-						<Border CornerRadius="10" Name="CloseButtonBorder">
-							<Border.Style>
-								<Style TargetType="{x:Type Border}">
-									<Setter Property="Background" Value="#FF7866"/>
+						<Ellipse Name="Ellipse">
+							<Ellipse.Style>
+								<Style TargetType="{x:Type Ellipse}">
 									<Setter Property="Visibility" Value="Hidden"/>
-									<Setter Property="BorderBrush" Value="#F0614F"/>
-									<Setter Property="BorderThickness" Value="1"/>
+									<Setter Property="Ellipse.Fill">
+										<Setter.Value>
+											<RadialGradientBrush >
+												<RadialGradientBrush.GradientStops>
+													<GradientStop Color="#FF7866" Offset="0" />
+													<GradientStop Color="#F0614F" Offset="10" />
+												</RadialGradientBrush.GradientStops>
+											</RadialGradientBrush>
+										</Setter.Value>
+									</Setter>
 									<Style.Triggers>
 										<DataTrigger Binding="{Binding IsMouseOver, ElementName=MainStackPanel}" Value="True">
 											<Setter Property="Visibility" Value="Visible"/>
 										</DataTrigger>
 										<DataTrigger Binding="{Binding IsMouseOver, ElementName=CloseButton}" Value="True">
-											<Setter  Property="Border.Background" Value="#F0614F"/>
+											<Setter  Property="Ellipse.Fill" Value="#F0614F"/>
 										</DataTrigger>
 									</Style.Triggers>
 								</Style>
-							</Border.Style>
-							<TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-1,0,0">✕</TextBlock>
-						</Border>
+							</Ellipse.Style>
+						</Ellipse>
 					</ControlTemplate>
 				</Button.Template>
 			</Button>
-			<Button Name="ExpandButton" Panel.ZIndex="5" Height="20" Width="20" Margin="-20,30,0,0" Click="ExpandButton_Click">
+			<Button Name="ExpandButton" Panel.ZIndex="5" Height="15" Width="15" Margin="-15,30,0,0" Click="ExpandButton_Click">
 				<Button.Template>
 					<ControlTemplate>
-						<Border CornerRadius="10" Name="ExpandButtonBorder">
-							<Border.Style>
-								<Style TargetType="{x:Type Border}">
-									<Setter Property="Background" Value="#00D24F"/>
+						<Ellipse Name="Ellipse">
+							<Ellipse.Style>
+								<Style TargetType="{x:Type Ellipse}">
 									<Setter Property="Visibility" Value="Hidden"/>
-									<Setter Property="BorderBrush" Value="#00BB44"/>
-									<Setter Property="BorderThickness" Value="1"/>
+									<Setter Property="Ellipse.Fill">
+										<Setter.Value>
+											<RadialGradientBrush >
+												<RadialGradientBrush.GradientStops>
+													<GradientStop Color="#00D24F" Offset="0" />
+													<GradientStop Color="#00BB44" Offset="10" />
+												</RadialGradientBrush.GradientStops>
+											</RadialGradientBrush>
+										</Setter.Value>
+									</Setter>
 									<Style.Triggers>
 										<DataTrigger Binding="{Binding IsMouseOver, ElementName=MainStackPanel}" Value="True">
 											<Setter Property="Visibility" Value="Visible"/>
 										</DataTrigger>
 										<DataTrigger Binding="{Binding IsMouseOver, ElementName=ExpandButton}" Value="True">
-											<Setter  Property="Border.Background" Value="#00BB44"/>
+											<Setter  Property="Ellipse.Fill" Value="#00BB44"/>
 										</DataTrigger>
 									</Style.Triggers>
 								</Style>
-							</Border.Style>
-							<TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-3,0,0">🗖</TextBlock>
-						</Border>
+							</Ellipse.Style>
+						</Ellipse>
 					</ControlTemplate>
 				</Button.Template>
 			</Button>
