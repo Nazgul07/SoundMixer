@@ -21,9 +21,9 @@ namespace SoundMixer
 	/// </summary>
 	public partial class MixerView : Window
 	{
-		private bool _sliding = false;
-		public Mixer _mixer = Mixer.Instance;
-		private Timer _timer;
+		private bool _sliding;
+		private readonly Mixer _mixer = Mixer.Instance;
+		private readonly Timer _timer;
 		public MixerView()
 		{
 			InitializeComponent();
@@ -31,8 +31,7 @@ namespace SoundMixer
 			Left = Properties.Settings.Default.Left;
 			Body.ItemsSource = _mixer.Apps;
 			this.DataContext = _mixer;
-			_timer = new Timer();
-			_timer.Interval = 300;
+			_timer = new Timer {Interval = 300};
 			bool alternateMuted = false;
 			_timer.Elapsed += (o, e) => {
 				alternateMuted = !alternateMuted;

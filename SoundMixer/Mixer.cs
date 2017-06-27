@@ -22,10 +22,11 @@ namespace SoundMixer
 				return list;
 			}
 		}
-		public MMDevice _inputDevice;
-		public MMDevice _outputDevice;
-		Timer _timer;
-		private static object _syncRoot = new object();
+
+		private readonly MMDevice _inputDevice;
+		private readonly MMDevice _outputDevice;
+		private readonly Timer _timer;
+		private static readonly object SyncRoot = new object();
 		private static Mixer _instance;
 
 		public static Mixer Instance
@@ -34,7 +35,7 @@ namespace SoundMixer
 			{
 				if (_instance == null)
 				{
-					lock(_syncRoot)
+					lock(SyncRoot)
 						if (_instance == null)
 							_instance = new Mixer();
 				}
@@ -42,16 +43,14 @@ namespace SoundMixer
 			}
 		}
 
-		public Mixer()
+		private Mixer()
 		{
-			
-			MMDeviceEnumerator DevEnum = new MMDeviceEnumerator();
-			_inputDevice = DevEnum.GetDefaultAudioEndpoint(EDataFlow.eCapture, ERole.eCommunications);
-			_outputDevice = DevEnum.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
+			MMDeviceEnumerator devEnum = new MMDeviceEnumerator();
+			_inputDevice = devEnum.GetDefaultAudioEndpoint(EDataFlow.eCapture, ERole.eCommunications);
+			_outputDevice = devEnum.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia);
 			InputMuted = _inputDevice.AudioEndpointVolume.Mute || _inputDevice.AudioMeterInformation.MasterPeakValue == 0;
-			
-			_timer = new Timer();
-			_timer.Interval = 10;
+
+			_timer = new Timer {Interval = 10};
 			_timer.Elapsed += _timer_Elapsed;
 			_timer.Start();
 		}
@@ -111,6 +110,8 @@ namespace SoundMixer
 		{
 			//be sure to unmute!!
 			_inputDevice.AudioEndpointVolume.Mute = false;
+			_timer.Stop();
+			_timer.Dispose();
 		}
 	}
 }
